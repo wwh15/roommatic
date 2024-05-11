@@ -1,0 +1,36 @@
+<div id="<%= dom_id apartment %>">
+  <h2 class="my-5">
+    <%= link_to apartment.city.name, city_path(apartment.city) %>
+  </h2>
+
+  
+  <h2 class="my-5">
+    <%= apartment.neighborhood.name %>
+  </h2>
+
+  <h1 class="my-5">
+    <%= apartment.street_address %>
+  </h1>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Bedrooms:</strong>
+    <%= apartment.bedrooms %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rent:</strong>
+    <%= apartment.rent %>
+  </p>
+
+  <p class="my-5">
+    <%= apartment.notes %>
+  </p>
+
+
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this apartment", apartment, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this apartment", edit_apartment_path(apartment), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

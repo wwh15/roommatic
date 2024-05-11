@@ -1,0 +1,50 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+  
+
+    <%= render @apartment %>
+
+    
+  <div class="bg-gray-300 p-4">
+    <h3><%= @apartment.residents.count%> Residents</h3>
+    <% @apartment.residents.each do |resident| %>
+      <li>
+        <%= roommate_display(resident.profile) %>
+      </li>
+    <% end %>
+    </ul>
+    
+    <% if @apartment.current_resident?(current_user) %>
+      <%= button_to("Move Out", vacate_apartment_path(@apartment),
+      method: :patch, class: "button-small bg-red-600") %>
+    <% elsif @apartment.unoccupied? %>
+      <%= button_to("Move In", occupy_apartment_path(@apartment),
+      method: :patch, class: "button-small bg-green-600") %>
+    <% end %>
+    
+  <h3><%= @pending_applications.count%> Applicants</h3>
+  <% @pending_applications.each do |application| %>
+    <li>
+      <%= roommate_display(application.applicant.profile) %>
+    </li>
+  <% end %>
+  </ul>
+  
+  <span class="inline-block text-sm">
+        <% if @apartment.can_apply?(current_user) %>
+          <%= button_to("Apply", apartment_apartment_requests_path(@apartment), method: :post, class: "button-small bg-yellow-600") %>
+        <% elsif @apartment.request_pending?(current_user)%>
+          <%= button_to("Unapply", apartment_apartment_request_path(@apartment, @apartment.request(current_user)), method: :delete, class: "button-small bg-red-600") %>
+        <%end %>
+  </span>
+  </div>
+
+
+
+    <%= link_to "Edit this apartment", edit_apartment_path(@apartment), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this apartment", apartment_path(@apartment), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back to apartments", apartments_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div>
+  <h1> Requests to Review <h1>
+
+  <% @reviewable_requests.each do |request| %>
+  <span class="inline-block text-sm">
+    <%= roommate_display(request.applicant.profile) %>
+    <%= button_to("Approve",
+      apartment_apartment_request_path(@my_apartment, request),
+      method: :patch,
+      params: { status: :approved },
+      class: "button-small bg-green-600 mt-3") %>
+
+    <%= button_to("Deny",
+      apartment_apartment_request_path(@my_apartment, request),
+      method: :patch,
+      params: { status: :denied },
+      class: "button-small bg-red-600 mt-3") %>
+  </span>
+  <% end %>
+      
+
+  <h1>My Requests</h1>
+  <% @my_requests.each do |request| %>
+    <%= request.apartment.street_address %> Status: <%= request.status %>
+
+  <% end %>
+ 
+</div>

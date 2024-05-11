@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lexington:
+  name: Lexington
+  state: Kentucky
+
+durham:
+  name: Durham
+  state: North Carolina

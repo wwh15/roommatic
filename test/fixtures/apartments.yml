@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+home:
+  street_address: 4261 Palmetto Drive
+  bedrooms: 3
+  rent: 1000
+  notes: Home address
+  neighborhood: palomar
+  city: lexington
+
+school:
+  street_address: 117 Edens
+  bedrooms: 1
+  rent: 200
+  notes: School
+  neighborhood: duke
+  city: durham

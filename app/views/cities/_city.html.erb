@@ -1,0 +1,18 @@
+<div id="<%= dom_id city %>">
+  <h1 class="my-5">
+    <%= city.name %>
+  </h1>
+
+  <h2 class="my-5">
+    <%= city.state %>, <%= city.country%>
+  </h2>
+
+  <hr></hr>
+
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this city", city, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this city", edit_city_path(city), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
